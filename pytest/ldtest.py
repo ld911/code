@@ -35,7 +35,7 @@ for i in data_rid:
     shu=i.get_attribute('data-rid')
     b.append(int(shu))
 # 获取属性的内容
-print(b)
-for ii in b:
-    sleep(3)
+bb=list(set(b))
+print(bb)
+sleep(3)
 driver.quit()
