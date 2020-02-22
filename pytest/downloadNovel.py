@@ -25,3 +25,6 @@ def getChapterText(link):
     return text
 
 
+## 下载小说 ：天下苏门 21987824000603002
+downloadNovel("21987824000603002")
+
