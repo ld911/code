@@ -1,7 +1,8 @@
 from selenium import webdriver
-driver=webdriver.Chrome()
+
+
 ### 根据id下载小说
-def downloadNovel(id):
+def downloadNovel(driver, id):
     ## 1. 打开小说目录列表页
     ## 打开 https://www.hongxiu.com/book/{id}#Catalog
     driver.get('https://www.hongxiu.com/book/' + id +  '#Catalog')
@@ -15,7 +16,7 @@ def downloadNovel(id):
     ## 4. 把所有章节的内容文本合在一起，存盘
 
 ## 根据章节链接，获取文字内容
-def getChapterText(link):
+def getChapterText(driver, link):
     ## 1. 打开章节页面
     driver.get(link)
 
@@ -26,5 +27,6 @@ def getChapterText(link):
 
 
 ## 下载小说 ：天下苏门 21987824000603002
-downloadNovel("21987824000603002")
-
+driver=webdriver.Chrome()
+downloadNovel(driver, "21987824000603002")
+driver.close()
