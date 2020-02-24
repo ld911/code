@@ -24,10 +24,16 @@ print(wlan.location)
 # pingban=driver.find_element_by_xpath("//*[@text='关于平板电脑']")
 
 for i in range(1,100):
-    if not driver.find_element_by_xpath("//*[contains(@text,'关于')]"):
+    target = None
+    try:
+        target = driver.find_element_by_xpath("//*[contains(@text,'关于')]")
+    except Exception:
+        target = None
+
+    if not target:
         driver.swipe(216, 1705, 216, 457)
     else:
-        driver.find_element_by_xpath("//*[contains(@text,'关于')]").click()
+        target.click()
         break
 
 
