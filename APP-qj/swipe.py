@@ -21,8 +21,6 @@ cunchu=driver.find_element_by_xpath("//*[@text='存储']")
 wlan=driver.find_element_by_xpath("//*[@text='WLAN']")
 print(cunchu.location)
 print(wlan.location)
-# pingban=driver.find_element_by_xpath("//*[@text='关于平板电脑']")
-
 for i in range(1,100):
     target = None
     try:
@@ -34,6 +32,12 @@ for i in range(1,100):
         driver.swipe(216, 1705, 216, 457)
     else:
         target.click()
+        tar = None
+        try:
+            tar=driver.find_element_by_xpath("//*[contains(@text,'5.1.1']")
+            print('有')
+        except Exception:
+            print("没有")
         break
 
 
