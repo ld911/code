@@ -21,14 +21,16 @@ def getvdo(driver, vdoId):
 
     if not os.path.exists(vdo_dir):
         os.makedirs(vdo_dir)
-
-    for episode in episodes:
-        updateVdoLink(driver, episode)
-        f = vdo_dir+'\\' + title + episode['name']+'.mp4'
-        print("downloading " + f +"/n")
-        req.urlretrieve(episode['vdosrc'], f)
-        print("finished    " + f +"/n")
-
+    try:
+        for episode in episodes:
+            updateVdoLink(driver, episode)
+            f = vdo_dir + '\\' + title + episode['name'] + '.mp4'
+            if not os.path.exists(f):
+                print("downloading " + f + "/n")
+                req.urlretrieve(episode['vdosrc'], f)
+                print("finished    " + f + "/n")
+    except:
+        return
 
 def updateVdoLink(driver, episode):
     driver.get(episode['href'])
@@ -42,5 +44,14 @@ opts = Options()
 opts.add_argument('--headless')
 opts.add_argument('--disable-gpu')
 driver = webdriver.Chrome(options=opts)
+# getvdo(driver, "1361")
+# getvdo(driver, "1707")
+getvdo(driver, "391")
+getvdo(driver, "6746")
 getvdo(driver, "5101")
+
+getvdo(driver, "390")
+getvdo(driver, "2444")
+getvdo(driver, "6705")
+getvdo(driver, "980")
 driver.close()
