@@ -1,5 +1,2 @@
-.pytest_cache/
-venv/Include/
-venv/Lib/
-venv/S
+venv/
 report/

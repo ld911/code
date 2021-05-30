@@ -1,18 +1,8 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from poium import Page, Element
 
-
-class BasePage(object):
-    """
-    页面基础类，承载公共属性和方法
-    """
-
-    def __init__(self, driver):
-        """
-        构造方法
-        :param driver: Selenium Driver
-        """
-        self.driver = driver
+class BasePage(Page):
 
     def wait_visibility(self, locator):
         """
