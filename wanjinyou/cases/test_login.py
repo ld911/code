@@ -4,8 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from pages.page_login import LoginPage
+import allure
 
-
+@allure.feature("登录页面测试")
 class TestLogin:
     def setup_method(self):
         self.driver = webdriver.Chrome()
@@ -28,23 +29,23 @@ class TestLogin:
         self.page.click_login()
         assert self.driver.find_element(By.XPATH, xpath)
 
-    # case1测试正确登录
+    @allure.story("case1测试正确登录")
     def test_case1(self):
         self.login_check("13379190312", "Ld111111", "//*[text()=' 集团']")
 
-    # 测试登录失败-手机号错误
+    @allure.story("测试登录失败-手机号错误")
     def test_case2(self):
         self.login_check("133791903122", "Ld111111", "//*[text()='请输入正确的手机号！']")
 
-     # 测试登录失败-密码错误
+    @allure.story("测试登录失败-密码错误")
     def test_case3(self):
         self.login_check("13379190312", "111111", "//*[text()='密码错误']")
 
-    # 测试登录失败-手机号密码都为空
+    @allure.story("测试登录失败-手机号密码都为空")
     def test_case4(self):
         self.login_check("", "", "//*[text()='请输入手机号或密码']")
 
-    # 测试发送验证码
+    @allure.story("测试发送验证码")
     def test_case5(self):
         self.page.input_username("13379190312")
         self.page.click_forget_password()
