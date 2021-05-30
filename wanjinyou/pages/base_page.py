@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from poium import Page, Element
 
+
 class BasePage(Page):
 
     def wait_visibility(self, locator):

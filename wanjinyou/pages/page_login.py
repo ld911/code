@@ -1,4 +1,4 @@
-from selenium.webdriver.common.by import By
+from poium import Element
 
 from pages.base_page import BasePage
 
@@ -7,54 +7,27 @@ class LoginPage(BasePage):
     """
     登录页面
     """
+    # # 控件定位方式
+    # css = "xx"
+    # id_ = "xx"
+    # name = "xx"
+    # xpath = "xx"
+    # link_text = "xx"
+    # partial_link_text = "xx"
+    # tag = "xx"
+    # class_name = "xx"
+    username = Element(name="username", describe="用户名输入框")
+    password = Element(name="password", describe="密码输入框")
+    login_button = Element(id_="login_button", describe="登录按钮")
+    forget_password = Element(id_="forget-password2", describe="忘记密码链接")
+    get_phone_captcha = Element(id_="getPhoneCaptcha", describe="获取验证码按钮")
 
-    def input_username(self, username):
+    def login(self, username, password):
         """
-        输入用户名
-
-        :param username: 用户名
-        :return:
+        用指定用户名、密码登录
+        :param username:
+        :param password:
         """
-        self.wait_visibility((By.ID, "username"))
-        self.driver.find_element(By.ID, "username").click()
-        self.driver.find_element(By.ID, "username").send_keys(username)
-
-    def input_password(self, password):
-        """
-        输入密码
-
-        :param password: 密码
-        :return:
-        """
-        self.wait_visibility((By.NAME, "password"))
-        self.driver.find_element(By.NAME, "password").click()
-        self.driver.find_element(By.NAME, "password").send_keys(password)
-
-    def click_login(self):
-        """
-        点击登录按钮
-        :return:
-        """
-        self.wait_visibility((By.ID, "login_button"))
-        self.driver.find_element(By.ID, "login_button").click()
-
-    def click_forget_password(self):
-        """
-        点击发送短信验证
-        :return:
-        """
-        self.driver.find_element(By.ID, "forget-password2").click()
-
-    def send_phone_captcha(self):
-        """
-        发送短信验证
-        :return:
-        """
-        self.driver.find_element(By.ID, "getPhoneCaptcha").click()
-
-    def get_phone_captcha_button_text(self):
-        """
-        获取“发送短信验证按钮”上显示的文字
-        :return:
-        """
-        return self.driver.find_element(By.ID, "getPhoneCaptcha").text
+        self.username.send_keys(username)
+        self.password.send_keys(password)
+        self.login_button.click()
