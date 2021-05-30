@@ -16,7 +16,7 @@ class TestLogin:
     def teardown_method(self):
         self.driver.close()
 
-    @allure.story("登录测试")
+    @allure.title("登录测试，使用：用户名 {username}，密码 {password}")
     @pytest.mark.parametrize(
         "username,password,xpath",
         [
