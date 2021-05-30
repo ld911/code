@@ -20,10 +20,17 @@ class TestLogin:
     @pytest.mark.parametrize(
         "username,password,xpath",
         [
-            pytest.param("13379190312", "Ld111111", "//*[text()=' 集团']", id="测试正确登录"),
-            pytest.param("133791903122", "Ld111111", "//*[text()='请输入正确的手机号！']", id="测试登录失败-手机号错误"),
-            pytest.param("13379190312", "111111", "//*[text()='密码错误']", id="测试登录失败-密码错误"),
-            pytest.param("", "", "//*[text()='请输入手机号或密码']", id="测试登录失败-手机号密码都为空")
+            pytest.param("13379190312", "Ld111111", "//*[text()=' 集团']",
+                         id="测试正确登录"),
+
+            pytest.param("133791903122", "Ld111111", "//*[text()='请输入正确的手机号！']",
+                         id="测试登录失败-手机号错误"),
+
+            pytest.param("13379190312", "111111", "//*[text()='密码错误']",
+                         id="测试登录失败-密码错误"),
+
+            pytest.param("", "", "//*[text()='请输入手机号或密码']",
+                         id="测试登录失败-手机号密码都为空")
         ]
     )
     def test_login_check(self, username, password, xpath):
