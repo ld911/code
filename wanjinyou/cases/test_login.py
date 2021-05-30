@@ -42,24 +42,11 @@ class TestLogin:
         self.page.login(username, password)
         assert self.driver.find_element(By.XPATH, xpath)
 
-    # @allure.story("")
-    # def test_case5(self):
-    #     self.page.input_username("13379190312")
-    #     self.page.click_forget_password()
-    #     self.page.send_phone_captcha()
-    #     sleep(5)
-    #     assert self.page.get_phone_captcha_button_text().startswith("重新发送")
+    @allure.story("")
+    def test_login_sms(self):
+         self.page.input_username("13379190312")
+         self.page.click_forget_password()
+         self.page.send_phone_captcha()
+         sleep(5)
+         assert self.page.get_phone_captcha_button_text().startswith("重新发送")
 
-    # # 退出登录
-    # def test_case6(self):
-    #     self.driver = webdriver.Chrome()
-    #     self.driver.get("http://tvip.nucarf.cn/Login.html")
-    #     self.driver.implicitly_wait(10)
-    #     self.driver.find_element(By.ID, "username").click()
-    #     self.driver.find_element(By.ID, "username").send_keys("13379190312")
-    #     self.driver.find_element(By.NAME, "password").click()
-    #     self.driver.find_element(By.NAME, "password").send_keys("Ld111111")
-    #     self.driver.find_element(By.ID, "login_button").click()
-    #     self.driver.implicitly_wait(10)
-    #     self.driver.set_window_size(1261, 760)
-    #     self.driver.find_element(By.LINK_TEXT, "退出登录").click()
